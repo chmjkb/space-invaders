@@ -45,6 +45,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self.update_screen()
 
     def _check_events(self):
@@ -62,6 +63,7 @@ class AlienInvasion:
 
     def _check_keydown_events(self, event):
         """Reaction to key being pressed"""
+
         if event.key == pygame.K_RIGHT:
             # Moving the ship to the right
             self.ship.moving_right = True
@@ -74,6 +76,7 @@ class AlienInvasion:
 
     def _check_keyup_events(self, event):
         """Reaction to key being released"""
+
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
@@ -81,6 +84,7 @@ class AlienInvasion:
 
     def _fire_bullet(self):
         """Displaying bullets on the screen"""
+
         # Setting the bullet limit
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
@@ -97,6 +101,7 @@ class AlienInvasion:
 
     def _create_fleet(self):
         """Creating aliens fleet"""
+
         # Creating an alien
         # The distance between aliens is equal to the aliens width
         alien = Alien(self)
@@ -116,12 +121,34 @@ class AlienInvasion:
 
     def _create_alien(self, alien_number, row_number):
         """Creating a new alien"""
+
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
         alien.x = alien_width + 2 * alien_width * alien_number
         alien.rect.x = alien.x
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
+
+    def _update_aliens(self):
+        """Updating the placement of every alien in the fleet and changing its direction"""
+
+        self._check_fleet_edges()
+        self.aliens.update()
+
+    def _check_fleet_edges(self):
+        """Reacting to aliens reaching the edge of a screen"""
+
+        for alien in self.aliens.sprites():
+            if alien.check_edges():
+                self._change_fleet_direction()
+                break
+
+    def _change_fleet_direction(self):
+        """Moving the aliens down and changing moving direction"""
+
+        for alien in self.aliens.sprites():
+            alien.rect.y += self.settings.fleet_drop_speed
+        self.settings.fleet_direction *= -1
 
     def update_screen(self):
         """Updating the pictures on the screen and coming onto the next picture"""
