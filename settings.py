@@ -19,3 +19,8 @@ class Settings:
         self.bullet_height = 15
         self.bullet_color = (244, 108, 0)  # Orange
         self.bullets_allowed = 3  # This allows the player to shoot only 3 bullets at a time
+
+        # Alien related settings
+        self.alien_speed = 1.0
+        self.fleet_drop_speed = 10
+        self.fleet_direction = 1  # 1 stands for right, -1 stands for left
