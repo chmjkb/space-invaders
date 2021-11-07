@@ -1,5 +1,5 @@
 # 🚀Simple space invaders game created using pygame.🚀
-The project is not finished yet, however you can already move the ship, shoot 3 bullets at a time, and watch the aliens head in your direction! Once the game is finished, a score will be shown, you will be able to change the difficulty and fight the aliens all night long!
+The project is not finished yet, however you can already move the ship, shoot 3 bullets at a time, and watch the aliens head in your direction! Once the game is finished, a score will be shown, you will be able to change the difficulty and fight the aliens all night long! There are various other features to be implemented.
 # How to install?
 If you don't have pygame installed, then type the following command into your terminal:
 ```
