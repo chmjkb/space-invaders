@@ -10,11 +10,12 @@ class Settings:
 
         # Background color (olive ish)
         self.bg_color = (75, 108, 0)
-        # Ship moving speed
+        # Ship settings
         self.ship_speed = 1.5
+        self.ship_limit = 3
 
         # Bullet-related settings
-        self.bullet_speed = 1.0
+        self.bullet_speed = 1.5
         self.bullet_width = 3
         self.bullet_height = 15
         self.bullet_color = (244, 108, 0)  # Orange
