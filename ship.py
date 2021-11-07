@@ -38,8 +38,13 @@ class Ship:
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
 
-        # Updating rect placemen t based on self.x value
+        # Updating rect placement based on self.x value
         self.rect.x = self.x
+
+    def center_ship(self):
+        """Placing the ship in the middle bottom part of the screen"""
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
 
     def blitme(self):
         """Displaying the spaceship in the right place"""
