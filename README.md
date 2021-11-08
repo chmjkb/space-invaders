@@ -12,7 +12,7 @@ pip3 install pygame
 Once you've done that, just copy that command intro your terminal:
 ```
 git clone https://github.com/chmjkb/space-invaders.git
-cd space-invaders
+cd space-invaders.git
 ```
 And just run the main file by typing:
 ```
