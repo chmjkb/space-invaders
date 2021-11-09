@@ -1,5 +1,5 @@
 # 🚀Simple space invaders game created using pygame.
-The project is not finished yet, however you can already move the ship, shoot, and watch the aliens die if you hit them! Once the game is finished, a score will be shown, you will be able to change the difficulty and fight the aliens all night long! There are various other features to be implemented. For now the game does not end, when any of the aliens hit the bottom of the screen or the ship - it just resets and you can keep on playing.
+The project almost finished. Once the game is finished, a score will be shown, you will be able to change the difficulty and fight the aliens all night long! There are various other features to be implemented. For now the game does not end, when any of the aliens hit the bottom of the screen or the ship - it just resets and you can keep on playing.
 # How to install?
 If you don't have pygame installed, then type the following command into your terminal:
 ```
