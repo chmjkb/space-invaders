@@ -2,6 +2,7 @@ import sys
 from time import sleep
 
 import pygame
+from pygame import mouse
 
 from settings import Settings
 from game_stats import GameStats
@@ -42,8 +43,10 @@ class AlienInvasion:
         # Creating sprite groups
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
-
         self._create_fleet()
+
+        # Creating Play button
+        self.play_button = Button(self, self.screen, "Play")
 
     def run_game(self):
         """Starting the mainloop"""
@@ -68,6 +71,24 @@ class AlienInvasion:
 
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
+            
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                self._check_play_button(mouse_pos)
+
+    def _check_play_button(self, mouse_pos):
+        """Beginning a new game if the player pressed on the button"""
+
+        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+        if button_clicked and not self.stats.game_active:
+            self.stats.reset_stats()
+            self.stats.game_active = True
+
+            self.aliens.empty()
+            self.bullets.empty()
+
+            self._create_fleet()
+            self.ship.center_ship()
 
     def _check_keydown_events(self, event):
         """Reaction to key being pressed"""
@@ -209,6 +230,9 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
+
+        if not self.stats.game_active:
+            self.play_button.draw_button()
 
         # Displaying the last modified frame
         pygame.display.flip()

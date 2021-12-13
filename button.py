@@ -4,7 +4,7 @@ class Button():
     """Handling the game button"""
     def __init__(self, ai_game, screen, msg):
         self.screen = ai_game.screen
-        self.screen_rect = self.scree.get_rect()
+        self.screen_rect = self.screen.get_rect()
 
         # Defining dimensions of the button
         self.width, self.height = 200, 50
