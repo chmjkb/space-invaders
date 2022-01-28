@@ -12,7 +12,6 @@ from bullet import Bullet
 from alien import Alien
 
 
-
 class AlienInvasion:
     """Main class created to manage the game"""
 
@@ -71,7 +70,7 @@ class AlienInvasion:
 
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
-            
+
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_play_button(mouse_pos)
@@ -220,6 +219,10 @@ class AlienInvasion:
             if alien.rect.bottom >= screen_rect.bottom:
                 self._ship_hit()
                 break
+
+    def pause_screen(self):
+        """Pausing the screen as user presses ESC"""
+
 
     def update_screen(self):
         """Updating the pictures on the screen and coming onto the next picture"""
